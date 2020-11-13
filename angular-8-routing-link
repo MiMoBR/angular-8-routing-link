@@ -1,0 +1,37 @@
+1 - app.module.ts
+import { AppRoutingModule } from './app-routing.module';//routing import
+
+  imports: [
+    AppRoutingModule
+  ],
+
+2 - app-routing.module.ts
+
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { AccessComponent } from './access/access.component';
+import { MainComponent } from './main/main.component';
+
+const routes: Routes = [
+  {path:'', component:AccessComponent},
+  // {path:'error', component:}
+  {path:'access', component:AccessComponent},
+  {path:'main', component:MainComponent}
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+export const routingComponents = [
+  AccessComponent,
+  MainComponent
+]
+
+3 - app.component.html
+<router-outlet></router-outlet>
+
+4 - element
+<button routerLink="/main" type="button" class="btn btn-dark">Sign In</button>
